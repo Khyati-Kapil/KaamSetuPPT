@@ -27,7 +27,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 /* top bar */
 .bar{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px clamp(16px,3vw,40px)}
 .brand{display:flex;align-items:center;gap:9px;font:700 21px/1 var(--display);letter-spacing:-1px}
-.brand-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--orange);font-size:19px;transform:rotate(-22deg)}
+.brand-mark{width:30px;height:30px;flex-shrink:0;display:block}
 .brand b{color:var(--orange);font-weight:700}
 .bar-mid{font:700 10px var(--body);letter-spacing:1.6px;text-transform:uppercase;color:var(--green-2);display:flex;align-items:center;gap:8px}
 .bar-mid:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--orange)}
@@ -421,7 +421,7 @@ svg text{font-family:var(--hand)}
 
 <div class="deck" id="deck">
   <header class="bar">
-    <div class="brand"><span class="brand-mark">✳</span><span>Kaam<b>Setu</b></span></div>
+    <div class="brand"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#ff795b"/><path d="M5 20 Q16 4 27 20" fill="none" stroke="#19372d" stroke-width="2.6" stroke-linecap="round"/><path d="M10 20 V14.4 M16 20 V12 M22 20 V14.4" stroke="#19372d" stroke-width="1.8" stroke-linecap="round"/><path d="M3.5 20 H28.5" stroke="#19372d" stroke-width="2.6" stroke-linecap="round"/><path d="M3.5 25.5 Q9 23.5 16 25.5 T28.5 25.5" fill="none" stroke="#fffdf7" stroke-width="1.8" stroke-linecap="round" opacity=".9"/></svg><span>Kaam<b>Setu</b></span></div>
     <div class="bar-mid" id="barTitle">The problem</div>
     <div class="bar-right">
       <button class="nav-btn fs-btn" id="fsBtn" aria-label="Toggle full screen" title="Full screen">⤢</button>
