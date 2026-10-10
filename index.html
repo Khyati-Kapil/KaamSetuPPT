@@ -336,6 +336,13 @@ svg text{font-family:var(--hand)}
 .rev .lever{padding:10px 0 0}
 @media (max-width:640px){.also ul,.rev{grid-template-columns:1fr}}
 .sectors b{display:block;font:700 16px var(--hand);color:var(--orange)}.sectors .beyond{margin-top:8px}.sectors .beyond span{font-size:12.5px;padding:6px 12px}
+
+.wa{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.wa-msg{position:relative;background:#dcf8c6;border:1.5px solid #9fc98a;border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:12.5px;line-height:1.45;color:#1b2b22;box-shadow:3px 3px 0 #174b3a33}
+.wa-from{display:block;font-size:10.5px;font-weight:800;color:#128c7e;letter-spacing:.3px;margin-bottom:2px}
+.wa p{margin:0;font-size:13px;color:var(--muted)}
+.wa p b{color:var(--green)}
+@media (max-width:640px){.wa{grid-template-columns:1fr}}
 /* ---------- road ---------- */
 .road{position:relative;z-index:3;height:96px;overflow:hidden;border-top:1.5px solid var(--green);background:var(--leaf)}
 .hills{position:absolute;left:0;bottom:30px;width:140%;height:70px;transition:transform 1.6s cubic-bezier(.45,0,.3,1)}
@@ -550,6 +557,10 @@ svg text{font-family:var(--hand)}
       <div class="eyebrow in"><i></i>The flow · part 2</div>
       <h2 class="in" style="--d:1">From match to <em>booked</em>.</h2>
       <ol class="steps in" style="--d:3" id="steps"></ol>
+      <div class="wa in" style="--d:6">
+        <div class="wa-msg"><span class="wa-from">KaamSetu · WhatsApp</span>Farmer offers <b>₹750/day</b> for tomato picking, 12 Oct.<br>Reply <b>1</b> Accept · <b>2</b> Reject · <b>3</b> Bid</div>
+        <p><b>No app? No problem.</b> Every request, bid and offer is also sent on WhatsApp to both sides, so labourers and farmers can accept, reject or bid by reply.</p>
+      </div>
     </div>
     <div class="phone-wrap in" style="--d:3">
       <div class="phone" aria-live="polite">
