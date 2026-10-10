@@ -324,6 +324,17 @@ svg text{font-family:var(--hand)}
   .pgrid{grid-template-columns:1fr}
   .pay-row{grid-template-columns:1fr;gap:6px}
 }
+
+.also{margin-top:14px}
+.also b,.rev-wrap b{display:block;font:700 16px var(--hand);color:var(--orange);margin-bottom:6px}
+.also ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+.also li{position:relative;padding-left:20px;font-size:12.5px;line-height:1.35;color:var(--ink)}
+.also li:before{content:'✓';position:absolute;left:0;top:0;color:var(--green-2);font-weight:800}
+#sw .ben,#se .ben{padding:7px 0}#sw h2,#se h2{font-size:clamp(30px,3.8vw,54px);margin:10px 0 10px}#sw .ben p,#se .ben p{font-size:12.5px}
+.rev-wrap{margin-top:18px}
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rev .lever{padding:10px 0 0}
+@media (max-width:640px){.also ul,.rev{grid-template-columns:1fr}}
 /* ---------- road ---------- */
 .road{position:relative;z-index:3;height:96px;overflow:hidden;border-top:1.5px solid var(--green);background:var(--leaf)}
 .hills{position:absolute;left:0;bottom:30px;width:140%;height:70px;transition:transform 1.6s cubic-bezier(.45,0,.3,1)}
@@ -452,7 +463,7 @@ svg text{font-family:var(--hand)}
 </section>
 
     <!-- 3 WORKERS -->
-    <section class="slide" data-title="For workers" data-short="Workers" aria-label="Slide 3: How workers benefit">
+    <section class="slide" data-title="For workers" data-short="Workers" aria-label="Slide 3: How workers benefit" id="sw">
   <div class="wrap split">
     <div>
       <div class="eyebrow in"><i></i>For labourers · मजुरांसाठी</div>
@@ -462,6 +473,7 @@ svg text{font-family:var(--hand)}
 <div class="ben in" style="--d:4"><span class="tag y">₹ Wage</span><div><h3>Know the wage before you go</h3><p>Set your daily rate, bargain, and accept only a fair price.</p></div></div>
 <div class="ben in" style="--d:5"><span class="tag ">Nearby</span><div><h3>Work within your travel distance</h3><p>Jobs show village and date in advance, so you can plan your week.</p></div></div>
 <div class="ben in" style="--d:6"><span class="tag o">Private</span><div><h3>Your number stays safe</h3><p>Phone numbers are never shown publicly.</p></div></div></div>
+<div class="also in" style="--d:7"><b>Our goals for labourers</b><ul><li>Target 10–15% job opportunities in every village across Nashik</li><li>Connect local labourers with local employers to cut travel time and cost</li><li>Regular work and consistent daily income</li><li>Reduce unstable daily income</li><li>Reduce dependence on middlemen</li><li>Direct and timely job information</li></ul></div>
 </div>
     <div class="card-stack in" style="--d:2">
       <div class="mock drag">
@@ -475,7 +487,7 @@ svg text{font-family:var(--hand)}
 </section>
 
     <!-- 4 EMPLOYERS -->
-    <section class="slide" data-title="For employers" data-short="Employers" aria-label="Slide 4: How employers benefit">
+    <section class="slide" data-title="For employers" data-short="Employers" aria-label="Slide 4: How employers benefit" id="se">
   <div class="wrap split">
     <div class="card-stack flip in" style="--d:2">
       <div class="mock drag">
@@ -493,6 +505,7 @@ svg text{font-family:var(--hand)}
 <div class="ben in" style="--d:4"><span class="tag y">Plan</span><div><h3>Book before harvest day</h3><p>Line up a crew days ahead for picking, spraying or plantation.</p></div></div>
 <div class="ben in" style="--d:5"><span class="tag ">₹ Price</span><div><h3>Price fixed upfront</h3><p>Bid or accept a worker's rate before work starts.</p></div></div>
 <div class="ben in" style="--d:6"><span class="tag o">Booked</span><div><h3>A confirmed booking</h3><p>Both sides agree, so you know who is coming.</p></div></div></div>
+<div class="also in" style="--d:7"><b>Problems we also solve</b><ul><li>Labour shortage during peak seasons</li><li>High transportation costs</li><li>Unverified labour skills</li><li>Last-minute labour cancellations</li><li>Time-consuming labour management</li></ul></div>
 </div>
   </div>
 </section>
@@ -547,16 +560,23 @@ svg text{font-family:var(--hand)}
 </section>
 
     <!-- 7 DATA -->
-    <section class="slide" data-title="Payments" data-short="Payments" aria-label="Slide 7: Business model and payments">
+    <section class="slide" data-title="Payments & revenue" data-short="Payments" aria-label="Slide 7: Business model and payments">
   <div class="wrap split">
     <div>
-      <div class="eyebrow in"><i></i>Payments</div>
+      <div class="eyebrow in"><i></i>Payments & revenue</div>
       <h2 class="in" style="--d:1">How <em>payment</em> works.</h2>
       <div class="pay">
         <div class="pay-row in" style="--d:2"><span class="tag">Agree</span><p>Farmer and labourer agree on the <b>wage</b> through offers and bids.</p></div>
         <div class="pay-row in" style="--d:2"><span class="tag">On booking</span><p>Farmer accepts and pays <b>wage + service charge</b> into the KaamSetu wallet.</p></div>
         <div class="pay-row in" style="--d:3"><span class="tag o">Farmer cancels</span><p>Amount refunded, <b>service charge deducted</b>.</p></div>
         <div class="pay-row in" style="--d:4"><span class="tag y">Labourer cancels</span><p>Labourer's wallet goes <b>minus by the service charge</b>.</p></div>
+      </div>
+      <div class="rev-wrap in" style="--d:5"><b>Revenue model</b>
+        <div class="rev">
+          <div class="lever"><h4>Service charges</h4><p>On every confirmed booking.</p></div>
+          <div class="lever"><h4>Membership</h4><p>Subscription for customers, with discounts on service.</p></div>
+          <div class="lever"><h4>Referral points</h4><p>Earn points for bringing in new users.</p></div>
+        </div>
       </div>
     </div>
     <div class="calc in" style="--d:3">
