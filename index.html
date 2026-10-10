@@ -335,6 +335,7 @@ svg text{font-family:var(--hand)}
 .rev{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .rev .lever{padding:10px 0 0}
 @media (max-width:640px){.also ul,.rev{grid-template-columns:1fr}}
+.sectors b{display:block;font:700 16px var(--hand);color:var(--orange)}.sectors .beyond{margin-top:8px}.sectors .beyond span{font-size:12.5px;padding:6px 12px}
 /* ---------- road ---------- */
 .road{position:relative;z-index:3;height:96px;overflow:hidden;border-top:1.5px solid var(--green);background:var(--leaf)}
 .hills{position:absolute;left:0;bottom:30px;width:140%;height:70px;transition:transform 1.6s cubic-bezier(.45,0,.3,1)}
@@ -521,10 +522,10 @@ svg text{font-family:var(--hand)}
       <div class="lane f">
         <div class="runner"><i></i></div>
         <div class="lane-head in" style="--d:2"><span class="tag o">Farmer</span></div>
-        <div class="node in" style="--d:3"><small>01</small><h4>Find workers</h4></div>
-        <div class="node in" style="--d:4"><small>02</small><h4>Post the job</h4></div>
-        <div class="node in" style="--d:5"><small>03</small><h4>Job goes live</h4></div>
-        <div class="node in" style="--d:6"><small>04</small><h4>See matches</h4></div>
+        <div class="node in" style="--d:3"><small>01</small><h4>Register</h4><p>Name, mobile, village</p></div>
+        <div class="node in" style="--d:4"><small>02</small><h4>Post a job</h4><p>Work, date, workers, wage</p></div>
+        <div class="node in" style="--d:5"><small>03</small><h4>Get matched labourers</h4><p>Ranked by skill & distance</p></div>
+        <div class="node in" style="--d:6"><small>04</small><h4>Accept or bid</h4><p>On a labourer's rate</p></div>
       </div>
       <div class="matcher in" style="--d:7">
         <div></div>
@@ -533,10 +534,10 @@ svg text{font-family:var(--hand)}
       <div class="lane w">
         <div class="runner"><i></i></div>
         <div class="lane-head in" style="--d:8"><span class="tag">Labourer</span></div>
-        <div class="node in" style="--d:9"><small>01</small><h4>Find work</h4></div>
-        <div class="node in" style="--d:10"><small>02</small><h4>Add skills & wage</h4></div>
-        <div class="node in" style="--d:11"><small>03</small><h4>Profile ready</h4></div>
-        <div class="node in" style="--d:12"><small>04</small><h4>Browse jobs</h4></div>
+        <div class="node in" style="--d:9"><small>01</small><h4>Register</h4><p>Name, mobile, village</p></div>
+        <div class="node in" style="--d:10"><small>02</small><h4>Add skills & wage</h4><p>Availability, travel distance</p></div>
+        <div class="node in" style="--d:11"><small>03</small><h4>Get matched jobs</h4><p>Nearby work that fits</p></div>
+        <div class="node in" style="--d:12"><small>04</small><h4>Request or bid</h4><p>Offer a daily rate</p></div>
       </div>
     </div>
   </div>
@@ -547,7 +548,7 @@ svg text{font-family:var(--hand)}
   <div class="wrap split">
     <div>
       <div class="eyebrow in"><i></i>The flow · part 2</div>
-      <h2 class="in" style="--d:1">From offer to <em>booked</em>.</h2>
+      <h2 class="in" style="--d:1">From match to <em>booked</em>.</h2>
       <ol class="steps in" style="--d:3" id="steps"></ol>
     </div>
     <div class="phone-wrap in" style="--d:3">
@@ -630,7 +631,8 @@ svg text{font-family:var(--hand)}
       <div class="rc in" style="--d:3"><h3>Next</h3><ul><li>Pilot across Nashik district</li><li>UPI payments & wallet</li></ul></div>
       <div class="rc in" style="--d:4"><h3>Later</h3><ul><li>Every state across India</li><li>Workers in non-farm sectors such as packing, warehouses and construction</li><li>More Indian languages</li></ul></div>
     </div>
-    <div class="thanks in" style="--d:5">
+    <div class="sectors in" style="--d:5"><b>Sectors we will expand to</b><div class="beyond"><span>Farming</span><span>Packhouse & post-harvest</span><span>Nursery</span><span>APMC market</span><span>Construction</span><span>Industrial work</span><span>Hygiene & sanitation</span><span>Other basic work</span></div></div>
+    <div class="thanks in" style="--d:6">
       <h2><span class="deva">धन्यवाद</span> · <em>Thank you</em></h2>
     </div>
   </div>
@@ -733,10 +735,10 @@ const cyc=$$('.cycle>span');let ci=0;setInterval(()=>{if(cur!==1)return;cyc[ci].
 
 /* deal steps */
 const steps=[
- {t:'Worker sends a request',w:'worker',p:'',who:'Farmer view',av:'ऋ',pill:'● SMART MATCH',h:'Labour request matched',d:'Tomato picking · Niphad<br>Skill and location match',price:'₹700',btn:['Accept ₹700','Send a bid']},
- {t:'Farmer counters',w:'farmer',p:'',who:'Farmer view',av:'ऋ',pill:'● SEND A BID',h:'Your offer to Vishnu',d:'Expected ₹800 · requested ₹700',price:'₹750',btn:['Send ₹750 offer']},
- {t:'Worker accepts',w:'worker',p:'',who:'Worker view',av:'वि',pill:'● FARMER RESPONSE',h:'Price offered: ₹750/day',d:'The farmer accepted your skill match. Review the price.',price:'₹750',btn:['Accept price ↗','Reject']},
- {t:'Farmer pays into wallet',w:'farmer',p:'',who:'Farmer view',av:'ऋ',pill:'● WORKER ACCEPTED',h:'Ready to confirm booking',d:'Worker accepted ₹750/day. Add the service charge to confirm.',price:'₹750',btn:['Pay into wallet']},
+ {t:'Request or bid sent',w:'either side',p:'',who:'Farmer view',av:'ऋ',pill:'● SMART MATCH',h:'Labour request matched',d:'Tomato picking · Niphad<br>Skill and location match',price:'₹700',btn:['Accept ₹700','Send a bid']},
+ {t:'Counter-offer',w:'farmer',p:'',who:'Farmer view',av:'ऋ',pill:'● SEND A BID',h:'Your offer to Vishnu',d:'Expected ₹800 · requested ₹700',price:'₹750',btn:['Send ₹750 offer']},
+ {t:'Wage agreed',w:'labourer',p:'',who:'Worker view',av:'वि',pill:'● FARMER RESPONSE',h:'Price offered: ₹750/day',d:'The farmer accepted your skill match. Review the price.',price:'₹750',btn:['Accept price ↗','Reject']},
+ {t:'Farmer pays wage + service charge',w:'farmer',p:'',who:'Farmer view',av:'ऋ',pill:'● WORKER ACCEPTED',h:'Ready to confirm booking',d:'Worker accepted ₹750/day. Add the service charge to confirm.',price:'₹750',btn:['Pay into wallet']},
  {t:'Booking confirmed',w:'both',p:'',who:'Both sides',av:'✓',pill:'● BOOKING CONFIRMED',h:'Tomato picking is booked',d:'Both sides accepted the price. Coordinate the start time.',price:'₹750',btn:[],ok:true}
 ];
 $('#steps').innerHTML=steps.map((s,i)=>`<li><button data-step="${i}"><span class="num">${i+1}</span><span><h4>${s.t}<span class="who">${s.w}</span></h4></span></button></li>`).join('');
