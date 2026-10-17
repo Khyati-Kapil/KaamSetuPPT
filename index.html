@@ -862,6 +862,25 @@ a.dg-url{color:#22365a;text-decoration:underline;text-underline-offset:2px;font-
 .wa3 .wa-flow li{padding:3px 8px}
 .slide:has(.wa3) .wa-learn{font-size:11.5px;padding:6px 10px;margin-top:8px}
 .slide:has(.wa3) .wa-chips span{font-size:11px;padding:4px 9px}
+/* bid offer screen */
+.wl-mob .wb-bid{display:none}
+.wl-mob[data-v="bid"] .wb-list{display:none}
+.wl-mob[data-v="bid"] .wb-bid{display:flex;flex-direction:column;gap:5px;animation:wpop .4s ease-out}
+.bid-msg{background:#1f2c34;color:#e9edef;border-radius:8px;border-top-left-radius:2px;padding:8px 10px 3px;font-family:'Noto Sans Devanagari',var(--body);max-width:96%}
+.bid-msg p{margin:0;font-size:11.5px;line-height:1.5}
+.bid-msg small{display:block;text-align:right;font-size:9.5px;color:#8696a0}
+.bid-btns{display:grid;gap:3px;max-width:96%}
+.bid-btns span{display:block;text-align:center;padding:7px 6px;border-radius:8px;background:#1f2c34;color:#53bdeb;font:600 11.5px 'Noto Sans Devanagari',var(--body)}
+.bid-btns .of{animation:pulseb 1.6s 1s ease-in-out 2}
+@keyframes pulseb{50%{background:#2a3942;box-shadow:0 0 0 2px #00a884 inset}}
+.bid-step{display:none;max-width:85%;padding:6px 9px;border-radius:8px;font:12px/1.4 'Noto Sans Devanagari',var(--body)}
+.bid-step.show{display:block;animation:wpop .35s ease-out}
+.bid-step.me{align-self:flex-end;background:#005c4b;color:#e9edef;border-top-right-radius:2px}
+.bid-step.bot{align-self:flex-start;background:#1f2c34;color:#e9edef;border-top-left-radius:2px}
+.wl-tabs{display:flex;gap:4px;background:#ffffff8c;padding:3px;border-radius:999px;border:1px solid #cfc3ad}
+.wl-tabs button{border:0;background:none;padding:5px 11px;border-radius:999px;font:700 11px var(--body);color:#4a3a3a;cursor:pointer}
+.wl-tabs button.on{background:#1d2a44;color:#fff}
+.wl-mob{height:clamp(360px,58vh,490px)}
 
 /* ---------- road ---------- */
 .road{position:relative;z-index:3;height:96px;overflow:hidden;border-top:1.5px solid var(--green);background:var(--leaf)}
@@ -1167,14 +1186,22 @@ a.dg-url{color:#22365a;text-decoration:underline;text-underline-offset:2px;font-
       <div class="wl in" style="--d:5">
         <div class="wl-mob">
           <div class="mob-notch"></div>
-          <div class="mob-head"><span class="mob-av ks">क</span><div><b>KaamSetu</b><small>How the list looks to a worker</small></div></div>
-          <div class="wl-body">
+          <div class="mob-head"><span class="mob-av ks">क</span><div><b>KaamSetu</b><small id="wlSub">How the list looks to a worker</small></div></div>
+          <div class="wl-body wb-list">
             <div class="wl-msg"><p>तुम्ही कोणत्या प्रकारचे काम शोधत आहात?</p><small>17:00</small><button class="wl-btn" tabindex="-1">☰ पर्याय निवडा</button></div>
             <div class="wl-dim"></div>
             <div class="wl-sheet"><div class="wl-grab"></div><div class="wl-title"><span>✕</span><b>कामाचा प्रकार</b></div><ul class="wl-opts"><li data-i="0"><span><b>शेतीकाम</b><small>Farm work</small></span><i></i></li><li data-i="1"><span><b>पॅकहाऊस</b><small>Packhouse</small></span><i></i></li><li data-i="2"><span><b>लोडिंग-अनलोडिंग</b><small>Loading / unloading</small></span><i></i></li><li data-i="3"><span><b>बांधकाम</b><small>Construction</small></span><i></i></li></ul><div class="wl-send">पाठवा ➤</div></div>
           </div>
+          <div class="wl-body wb-bid">
+            <div class="bid-msg"><p><b>🍅 नवीन काम · New job</b><br>काम: टोमॅटो तोडणी<br>ठिकाण: निमगाव, निफाड (8 किमी)<br>तारीख: उद्या, सकाळी 7:30<br>कामगार: 10 · शेतकरी देतो: <b>₹650 / दिवस</b></p><small>18:10</small></div>
+            <div class="bid-btns"><span class="ok">✅ स्वीकारा · Accept</span><span class="no">❌ नाकारा · Reject</span><span class="of">💬 ऑफर द्या · Make offer</span></div>
+            <div class="bid-step b1 me">💬 ऑफर द्या</div>
+            <div class="bid-step b2 bot">तुमची मजुरी लिहा (₹ प्रति दिवस)</div>
+            <div class="bid-step b3 me">700</div>
+            <div class="bid-step b4 bot">✓ तुमची <b>₹700</b> ऑफर शेतकऱ्याला पाठवली. उत्तर आल्यावर कळवू.</div>
+          </div>
         </div>
-        <small class="wl-cap">One tap, no typing: options come as a WhatsApp list</small>
+        <div class="wl-tabs"><button data-v="list" class="on">Choose from list</button><button data-v="bid">Bid offer</button></div><small class="wl-cap" id="wlCap">One tap, no typing: options come as a WhatsApp list</small>
       </div>
     </div>
   </div>
@@ -1182,7 +1209,11 @@ a.dg-url{color:#22365a;text-decoration:underline;text-underline-offset:2px;font-
 function sync(){const r=body.getBoundingClientRect(),c=r.top+r.height*.6;let st=0;for(const b of bs){if(b.getBoundingClientRect().top<=c)st=+b.dataset.s;}if(body.scrollTop+body.clientHeight>=body.scrollHeight-4)st=8;li.forEach((l,k)=>{l.classList.toggle('on',k==st);l.classList.toggle('done',k<st);});}
 body.addEventListener('scroll',sync,{passive:true});body.addEventListener('wheel',e=>e.stopPropagation(),{passive:true});body.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});body.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});body.addEventListener('keydown',e=>e.stopPropagation());
 li.forEach((l,k)=>l.onclick=e=>{e.stopPropagation();const t=bs.find(b=>+b.dataset.s==k);if(t)body.scrollTo({top:t.offsetTop-body.offsetTop-12,behavior:'smooth'});});sync();})();</script>
-<script>(function(){const sec=document.currentScript.closest('section');const li=[...sec.querySelectorAll('.wl-opts li')];let k=0,t=0;setInterval(()=>{if(!sec.classList.contains('active'))return;t++;if(t%2)return;li.forEach((l,j)=>l.classList.toggle('on',j==k));k=(k+1)%li.length;},700);li[1].classList.add('on');})();</script>
+<script>(function(){const sec=document.currentScript.closest('section');const li=[...sec.querySelectorAll('.wl-opts li')],mob=sec.querySelector('.wl-mob'),tabs=[...sec.querySelectorAll('.wl-tabs button')],cap=sec.querySelector('#wlCap'),sub=sec.querySelector('#wlSub');
+const C={list:['How the list looks to a worker','One tap, no typing: options come as a WhatsApp list'],bid:['Job alert with bid buttons','Worker can accept, reject or counter with their own wage']};
+let v='list',k=1,t=0,auto=true;function set(n){v=n;mob.dataset.v=n;tabs.forEach(b=>b.classList.toggle('on',b.dataset.v==n));sub.textContent=C[n][0];cap.textContent=C[n][1];t=0;sec.querySelectorAll('.bid-step').forEach(e=>e.classList.remove('show'));}
+tabs.forEach(b=>b.onclick=e=>{e.stopPropagation();auto=false;set(b.dataset.v);});
+setInterval(()=>{if(!sec.classList.contains('active'))return;t++;if(v=='list'){if(t%2==0){li.forEach((l,j)=>l.classList.toggle('on',j==k));k=(k+1)%li.length;}if(auto&&t>=12)set('bid');}else{const st=[...sec.querySelectorAll('.bid-step')];const n=Math.floor((t-2)/2);if(n>=0&&n<st.length)st[n].classList.add('show');if(auto&&t>=16)set('list');}},700);set('list');li[1].classList.add('on');})();</script>
 </section>
 
 
