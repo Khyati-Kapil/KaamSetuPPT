@@ -826,6 +826,42 @@ a.dg-url{color:#22365a;text-decoration:underline;text-underline-offset:2px;font-
 .kpi{padding:6px 9px}.kpi strong{font-size:20px}
 .slide .fs:nth-child(4) .fbar{background:#7a3b2a;color:#fff}
 .slide .fs:nth-child(5) .fbar{background:var(--orange);color:#fff}
+/* whatsapp list mockup */
+.slide:has(.wa3) .wrap{grid-template-columns:minmax(0,1fr) auto auto}
+.slide:has(.wa3) .wl{grid-column:3;grid-row:1/span 4;align-self:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.slide:has(.wa3) .mob{width:clamp(280px,24vw,350px)}
+.wl-mob{position:relative;width:clamp(230px,18vw,270px);height:clamp(380px,62vh,520px);border-radius:32px;border:8px solid #1d2a44;background:#0b141a;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 22px 44px -18px rgba(29,42,68,.6)}
+.mob-av.ks{background:#e0692e;color:#fff;font:700 14px var(--display)}
+.wl-body{position:relative;flex:1;background:#0b141a;padding:12px 8px;overflow:hidden}
+.wl-msg{background:#1f2c34;color:#e9edef;border-radius:8px;border-top-left-radius:2px;max-width:92%;padding:8px 10px 0;font-family:'Noto Sans Devanagari',var(--body)}
+.wl-msg p{margin:0;font-size:12.5px;line-height:1.4}
+.wl-msg small{display:block;text-align:right;font-size:9.5px;color:#8696a0}
+.wl-btn{display:block;width:calc(100% + 20px);margin:6px -10px 0;padding:8px;border:0;border-top:1px solid #2a3942;background:none;color:#53bdeb;font:600 12.5px 'Noto Sans Devanagari',var(--body);cursor:default}
+.wl-dim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.wl-sheet{position:absolute;left:0;right:0;bottom:0;background:#1f2c34;border-radius:16px 16px 0 0;padding:6px 12px 10px;color:#e9edef;font-family:'Noto Sans Devanagari',var(--body);animation:wlup .6s .4s cubic-bezier(.2,.8,.2,1) both}
+.slide:not(.active) .wl-sheet{animation:none}
+@keyframes wlup{from{transform:translateY(100%)}}
+.wl-grab{width:36px;height:4px;border-radius:2px;background:#3b4a54;margin:2px auto 8px}
+.wl-title{display:flex;align-items:center;gap:10px;font-size:13px;margin-bottom:6px}
+.wl-title span{color:#8696a0;font-size:12px}
+.wl-opts{list-style:none;margin:0;padding:0}
+.wl-opts li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 2px;border-bottom:1px solid #2a3942}
+.wl-opts b{display:block;font-weight:600;font-size:13px}
+.wl-opts small{display:block;font-size:10px;color:#8696a0;font-family:var(--body)}
+.wl-opts i{width:16px;height:16px;border-radius:50%;border:2px solid #8696a0;flex:none;transition:.25s}
+.wl-opts li.on i{border-color:#00a884;background:radial-gradient(#00a884 45%,transparent 50%)}
+.wl-opts li.on{background:rgba(0,168,132,.08)}
+.wl-send{margin-top:9px;text-align:center;padding:8px;border-radius:999px;background:#00a884;color:#0b141a;font-weight:700;font-size:12.5px}
+.wl-cap{font-size:11px;color:#4a3a3a;font-style:italic;max-width:240px;text-align:center}
+@media (max-width:1100px){.slide:has(.wa3) .wrap{grid-template-columns:minmax(0,1fr) auto}.slide:has(.wa3) .wl{grid-column:1/-1;grid-row:auto}}
+@media (max-width:1000px){.slide:has(.wa3) .wl{grid-column:1}}
+.slide:has(.wa3) h2{font-size:clamp(22px,2.3vw,32px)}
+.slide:has(.wa3) .wrap{column-gap:clamp(14px,2vw,28px)}
+.slide:has(.wa3) .mob{width:clamp(270px,22vw,320px)}
+.wl-mob{width:clamp(220px,17vw,250px)}
+.wa3 .wa-flow li{padding:3px 8px}
+.slide:has(.wa3) .wa-learn{font-size:11.5px;padding:6px 10px;margin-top:8px}
+.slide:has(.wa3) .wa-chips span{font-size:11px;padding:4px 9px}
 
 /* ---------- road ---------- */
 .road{position:relative;z-index:3;height:96px;overflow:hidden;border-top:1.5px solid var(--green);background:var(--leaf)}
@@ -1128,12 +1164,25 @@ a.dg-url{color:#22365a;text-decoration:underline;text-underline-offset:2px;font-
         </div>
         
       </div>
+      <div class="wl in" style="--d:5">
+        <div class="wl-mob">
+          <div class="mob-notch"></div>
+          <div class="mob-head"><span class="mob-av ks">क</span><div><b>KaamSetu</b><small>How the list looks to a worker</small></div></div>
+          <div class="wl-body">
+            <div class="wl-msg"><p>तुम्ही कोणत्या प्रकारचे काम शोधत आहात?</p><small>17:00</small><button class="wl-btn" tabindex="-1">☰ पर्याय निवडा</button></div>
+            <div class="wl-dim"></div>
+            <div class="wl-sheet"><div class="wl-grab"></div><div class="wl-title"><span>✕</span><b>कामाचा प्रकार</b></div><ul class="wl-opts"><li data-i="0"><span><b>शेतीकाम</b><small>Farm work</small></span><i></i></li><li data-i="1"><span><b>पॅकहाऊस</b><small>Packhouse</small></span><i></i></li><li data-i="2"><span><b>लोडिंग-अनलोडिंग</b><small>Loading / unloading</small></span><i></i></li><li data-i="3"><span><b>बांधकाम</b><small>Construction</small></span><i></i></li></ul><div class="wl-send">पाठवा ➤</div></div>
+          </div>
+        </div>
+        <small class="wl-cap">One tap, no typing: options come as a WhatsApp list</small>
+      </div>
     </div>
   </div>
   <script>(function(){const sec=document.currentScript.closest('section');const body=sec.querySelector('.mob-body'),bs=[...sec.querySelectorAll('.mc')],li=[...sec.querySelectorAll('.wa-flow li')];
 function sync(){const r=body.getBoundingClientRect(),c=r.top+r.height*.6;let st=0;for(const b of bs){if(b.getBoundingClientRect().top<=c)st=+b.dataset.s;}if(body.scrollTop+body.clientHeight>=body.scrollHeight-4)st=8;li.forEach((l,k)=>{l.classList.toggle('on',k==st);l.classList.toggle('done',k<st);});}
 body.addEventListener('scroll',sync,{passive:true});body.addEventListener('wheel',e=>e.stopPropagation(),{passive:true});body.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});body.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});body.addEventListener('keydown',e=>e.stopPropagation());
 li.forEach((l,k)=>l.onclick=e=>{e.stopPropagation();const t=bs.find(b=>+b.dataset.s==k);if(t)body.scrollTo({top:t.offsetTop-body.offsetTop-12,behavior:'smooth'});});sync();})();</script>
+<script>(function(){const sec=document.currentScript.closest('section');const li=[...sec.querySelectorAll('.wl-opts li')];let k=0,t=0;setInterval(()=>{if(!sec.classList.contains('active'))return;t++;if(t%2)return;li.forEach((l,j)=>l.classList.toggle('on',j==k));k=(k+1)%li.length;},700);li[1].classList.add('on');})();</script>
 </section>
 
 
